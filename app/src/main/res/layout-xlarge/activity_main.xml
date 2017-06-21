@@ -38,21 +38,29 @@
             android:orientation="vertical">
 
             <fragment
-                android:id="@+id/moon"
-                android:name="com.example.kriscool.myapplication.moon"
+                android:id="@+id/fragment"
+                android:name="com.example.kriscool.myapplication.info"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                tools:layout="@layout/moon"></fragment>
+                tools:layout="@layout/info"></fragment>
+
+            <fragment
+                android:id="@+id/moon"
+                android:name="com.example.kriscool.myapplication.wind"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                tools:layout="@layout/wind"></fragment>
 
             <fragment
                 android:id="@+id/sun"
-                android:name="com.example.kriscool.myapplication.Sun"
+                android:name="com.example.kriscool.myapplication.futureday"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentBottom="true"
                 android:layout_weight="1"
-                tools:layout="@layout/sun"></fragment>
+                tools:layout="@layout/futureday"></fragment>
         </LinearLayout>
 
     </LinearLayout>

@@ -9,24 +9,22 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 /**
- * Created by kriscool on 19.06.2017.
+ * Created by kriscool on 21.06.2017.
  */
 
-public class info extends Fragment {
-
+public class futureday extends Fragment {
     Weather w = new Weather();
     View view;
-    TextView wiatrSila;
-    TextView wiatrKierunek;
-    TextView wilgotnosc;
-    TextView widocznosc;
+    TextView dayOne;
+    TextView dayTwo;
+    TextView dayThree;
+    TextView dayFour;
     TextView miastoo;
-
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         setHasOptionsMenu(true);
-        view = inflater.inflate(R.layout.info, container, false);
+        view = inflater.inflate(R.layout.futureday, container, false);
 
         new Thread(new Runnable() {
             @Override
@@ -51,7 +49,10 @@ public class info extends Fragment {
     public void update(){
         getActivity().runOnUiThread(new Runnable() {
             public void run() {
-                setData(((MainActivity) getActivity()).getWheather(),
+                setData(((MainActivity) getActivity()).getD1(),
+                        ((MainActivity) getActivity()).getD2(),
+                        ((MainActivity) getActivity()).getD3(),
+                        ((MainActivity) getActivity()).getD4(),
                         view);
             }
         });
@@ -60,23 +61,21 @@ public class info extends Fragment {
 
 
     public void initializeElements(View view){
-        wiatrSila = (TextView) view.findViewById(R.id.tWiatrSilaWart);
-        wiatrKierunek = (TextView) view.findViewById(R.id.tKierunekWart);
-        wilgotnosc = (TextView) view.findViewById(R.id.tWilgotWart);
-        widocznosc = (TextView) view.findViewById(R.id.tWidoczWart);
-        miastoo = (TextView) view.findViewById(R.id.tMiastoInfo);
+        dayOne = (TextView) view.findViewById(R.id.dayOne);
+        dayTwo = (TextView) view.findViewById(R.id.dayTwo);
+        dayThree = (TextView) view.findViewById(R.id.dayThree);
+        dayFour = (TextView) view.findViewById(R.id.dayFour);
     }
 
-    public void setData(Weather w,View view){
+    public void setData(String d1,String d2,String d3,String d4,View view){
 
 
         initializeElements(view);
-        wiatrSila.setText(w.getSilaWiatru() + " mph");
-        wiatrKierunek.setText(w.getKierunekWiatru());
-        wilgotnosc.setText(w.getWilgotnosc());
-        widocznosc.setText(w.getWidocznosc());
-        miastoo.setText(w.getMiasto() + ", " + w.getKraj());
+        dayOne.setText(d1);
+        dayTwo.setText(d2);
+        dayThree.setText(d3);
+        dayFour.setText(d4);
+
 
     }
-
 }

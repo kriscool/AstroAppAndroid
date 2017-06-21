@@ -5,100 +5,108 @@ package com.example.kriscool.myapplication;
  */
 
 public class Weather {
-    String MWdesc;
-    String MNkraj;
-    String WIwiatrKierunek;
-    String MWcisnienie;
-    String WIwilgotnosc;
-    String WIwidocznosc;
-    String MWnazwaMiejsc;
-    String MWdlugosc ;
-    String MWszerokosc ;
-    String MWtemperatura ;
-    String WIwiatrSila;
-    public String getMWcisnienie() {
-        return MWcisnienie;
+    String opis;
+    String kraj;
+    String kierunekWiatru;
+    String cisnienie;
+    String wilgotnosc;
+    String widocznosc;
+    String miasto;
+    String dlugosc;
+    String szerokosc;
+    String temperatura;
+    String silaWiatru;
+
+
+    public String getAll(){
+        return getKraj() + getKierunekWiatru() +getCisnienie() + getWilgotnosc() + getWidocznosc() + getMiasto() + getDlugosc() + getSzerokosc() +getTemperatura() + getSilaWiatru();
+    }
+    public void setCisnienie(String cisnienie) {
+        this.cisnienie = cisnienie;
+    }
+    public String getCisnienie() {
+        return cisnienie;
     }
 
-    public String getWIwiatrKierunek() {
-        return WIwiatrKierunek;
+    public String getKierunekWiatru() {
+        return kierunekWiatru;
     }
 
-    public String getWIwilgotnosc() {
-        return WIwilgotnosc;
+    public String getWilgotnosc() {
+        return wilgotnosc;
     }
 
-    public String getWIwidocznosc() {
-        return WIwidocznosc;
+    public String getWidocznosc() {
+        return widocznosc;
     }
 
-    public void setWIwiatrKierunek(String WIwiatrKierunek) {
-        this.WIwiatrKierunek = WIwiatrKierunek;
+    public void setKierunekWiatru(String kierunekWiatru) {
+        this.kierunekWiatru = kierunekWiatru;
     }
 
-    public void setWIwilgotnosc(String WIwilgotnosc) {
-        this.WIwilgotnosc = WIwilgotnosc;
+    public void setWilgotnosc(String wilgotnosc) {
+        this.wilgotnosc = wilgotnosc;
     }
 
-    public void setWIwidocznosc(String WIwidocznosc) {
-        this.WIwidocznosc = WIwidocznosc;
+    public void setWidocznosc(String widocznosc) {
+        this.widocznosc = widocznosc;
     }
 
-    public String getMWdesc() {
-        return MWdesc;
+    public String getOpis() {
+        return opis;
     }
 
-    public String getMNkraj() {
-        return MNkraj;
+    public String getKraj() {
+        return kraj;
     }
 
-    public String getMWnazwaMiejsc() {
-        return MWnazwaMiejsc;
+    public String getMiasto() {
+        return miasto;
     }
 
-    public String getMWdlugosc() {
-        return MWdlugosc;
+    public String getDlugosc() {
+        return dlugosc;
     }
 
-    public String getMWszerokosc() {
-        return MWszerokosc;
+    public String getSzerokosc() {
+        return szerokosc;
     }
 
-    public String getMWtemperatura() {
-        return MWtemperatura;
+    public String getTemperatura() {
+        return temperatura;
     }
 
-    public String getWIwiatrSila() {
-        return WIwiatrSila;
+    public String getSilaWiatru() {
+        return silaWiatru;
     }
 
 
-    public void setMWdesc(String MWdesc) {
-        this.MWdesc = MWdesc;
+    public void setOpis(String opis) {
+        this.opis = opis;
     }
 
-    public void setMNkraj(String MNkraj) {
-        this.MNkraj = MNkraj;
+    public void setKraj(String kraj) {
+        this.kraj = kraj;
     }
 
-    public void setMWnazwaMiejsc(String MWnazwaMiejsc) {
-        this.MWnazwaMiejsc = MWnazwaMiejsc;
+    public void setMiasto(String miasto) {
+        this.miasto = miasto;
     }
 
-    public void setMWdlugosc(String MWdlugosc) {
-        this.MWdlugosc = MWdlugosc;
+    public void setDlugosc(String dlugosc) {
+        this.dlugosc = dlugosc;
     }
 
-    public void setMWszerokosc(String MWszerokosc) {
-        this.MWszerokosc = MWszerokosc;
+    public void setSzerokosc(String szerokosc) {
+        this.szerokosc = szerokosc;
     }
 
-    public void setMWtemperatura(String MWtemperatura) {
-        this.MWtemperatura = MWtemperatura;
+    public void setTemperatura(String temperatura) {
+        this.temperatura = temperatura;
     }
 
-    public void setWIwiatrSila(String WIwiatrSila) {
-        this.WIwiatrSila = WIwiatrSila;
+    public void setSilaWiatru(String silaWiatru) {
+        this.silaWiatru = silaWiatru;
     }
 
 }
