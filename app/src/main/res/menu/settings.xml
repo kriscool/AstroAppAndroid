@@ -8,4 +8,11 @@
         android:title="@string/action_settings"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/action_favorite"
+        android:icon="@drawable/odswiezanie"
+        android:title="odswizanie"
+        app:showAsAction="ifRoom"/>
+
+
 </menu>

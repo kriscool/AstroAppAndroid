@@ -67,7 +67,7 @@
 
         <EditText
             android:id="@+id/cityDzialaj"
-            android:layout_width="279dp"
+            android:layout_width="231dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"

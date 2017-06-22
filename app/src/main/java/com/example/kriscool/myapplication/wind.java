@@ -98,11 +98,11 @@ public class wind extends Fragment {
         String pogoda = pogoda2.toLowerCase();
         opis.setText(d0);
 
-            if(pogoda.contains("cloudy")){
+            if(pogoda.contains("cloudy") ){
                 image.setImageResource(R.drawable.chumrki);}
             else if(pogoda.contains("sunny")) {
                 image.setImageResource(R.drawable.slonecznie);
-            }else if(pogoda.contains("rain")) {
+            }else if(pogoda.contains("rain") || pogoda.contains("showers")) {
                 image.setImageResource(R.drawable.deszcz);
             }else if(pogoda.contains("storm")){
                 image.setImageResource(R.drawable.burza);

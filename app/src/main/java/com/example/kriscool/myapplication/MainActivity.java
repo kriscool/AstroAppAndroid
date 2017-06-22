@@ -36,7 +36,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
+    String jednostki= "and%20u=\"c\"";
     EditText e;
     int index = 0;
     Spinner spin;
@@ -92,18 +92,22 @@ public class MainActivity extends AppCompatActivity {
 
 
         if(czyOdczytano != true) {
-            if (accessToInternet()) {
-                getDataFromInternet();
-                czyOdczytano = true;
-            } else {
-                odczyt();
-                getData();
-                czyOdczytano = true;
-            }
+            getDateIn();
         }
     }
-
+    public void getDateIn(){
+        if (accessToInternet()) {
+            getDataFromInternet();
+            czyOdczytano = true;
+        } else {
+            odczyt();
+            getData();
+            czyOdczytano = true;
+        }
+    }
     private void getData() {
+        Toast.makeText(getApplicationContext(),
+                "Brak połączenia internetowego. Pobieram ostatnia zapisana pozycje", Toast.LENGTH_LONG).show();
                         try{
                             JSONObject responsee = new JSONObject(output);
                             JSONObject query = responsee.getJSONObject("query");
@@ -184,11 +188,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         int id = item.getItemId();
 
         if (id == R.id.action) {
             showDialog();
-        }
+        } else if(id == R.id.action_favorite){
+            Toast.makeText(getApplicationContext(),
+                    "Refresh", Toast.LENGTH_LONG).show();
+            getDateIn();
+       }
         return super.onOptionsItemSelected(item);
     }
 
@@ -206,8 +215,8 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.settings, menu);
         return true;
     }
-
-
+    Button murica;
+    Button europ;
  private void showDialog() {
 
 
@@ -219,20 +228,43 @@ public class MainActivity extends AppCompatActivity {
      alterdiagog = dialogBuilder.create();
      city = (EditText) dialog.findViewById(R.id.cityDzialaj);
      city.setText(cityUrl);
-
-     refreshText = (EditText) dialog.findViewById(R.id.Refresh);
+       murica = (Button) dialog.findViewById(R.id.murica);
+       europ = (Button) dialog.findViewById(R.id.euro);
      int a = (int) latitude;
-     refreshText.setText(String.valueOf(a));
         confirm = (Button) dialog.findViewById(R.id.ConfirmButton);
         e = (EditText) dialog.findViewById(R.id.ulubione);
         spin = (Spinner) dialog.findViewById(R.id.spinner) ;
+
+
+     murica.setOnClickListener(new View.OnClickListener() {
+
+         @Override
+         public void onClick(View v) {
+
+            jednostki = "";
+             getDataFromInternet();
+             alterdiagog.dismiss();
+
+         }
+     });
+
+     europ.setOnClickListener(new View.OnClickListener() {
+
+         @Override
+         public void onClick(View v) {
+
+             jednostki = "and%20u=\"c\"";
+             getDataFromInternet();
+             alterdiagog.dismiss();
+
+         }
+     });
      confirm.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
                 cityUrl = city.getText().toString();
-                refreshtime = Integer.parseInt(refreshText.getText().toString());
                 getDataFromInternet();
                 alterdiagog.dismiss();
 
@@ -244,7 +276,13 @@ public class MainActivity extends AppCompatActivity {
 
          @Override
          public void onClick(View v) {
-            if(index <5) {
+             boolean isintab = false;
+             for(String x:ulubone){
+                 if(x.equals( e.getText().toString())){
+                     isintab = true;
+                 }
+             }
+            if(index <5 && isintab == false && !("").equals(e.getText().toString())) {
                 ulubone.add(index, e.getText().toString());
                 index++;
                 addNewNote(e.getText().toString());
@@ -260,7 +298,6 @@ public class MainActivity extends AppCompatActivity {
              int indexusun = 0;
              for(Note x:allNotes) {
                  if (x.getNoteText().equals(e.getText().toString())){
-
                      ulubone.remove(indexusun);
                  }
                  indexusun++;
@@ -284,35 +321,37 @@ public class MainActivity extends AppCompatActivity {
 
              switch (position) {
                  case 0:
-                     cityUrl = spin.getSelectedItem().toString();
-                     getDataFromInternet();
                      break;
                  case 1:
                      cityUrl = spin.getSelectedItem().toString();
-                     getDataFromInternet();
 
+                     getDataFromInternet();
                      alterdiagog.dismiss();
                      break;
                  case 2:
-                     cityUrl = spin.getSelectedItem().toString();
+                       cityUrl = spin.getSelectedItem().toString();
+
                      getDataFromInternet();
 
                      alterdiagog.dismiss();
                      break;
                  case 4:
-                     cityUrl = spin.getSelectedItem().toString();
+                      cityUrl = spin.getSelectedItem().toString();
+
                      getDataFromInternet();
 
                      alterdiagog.dismiss();
                      break;
                  case 3:
-                     cityUrl = spin.getSelectedItem().toString();
+                       cityUrl = spin.getSelectedItem().toString();
+
                      getDataFromInternet();
 
                      alterdiagog.dismiss();
                      break;
                  case 5:
-                     cityUrl = spin.getSelectedItem().toString();
+                       cityUrl = spin.getSelectedItem().toString();
+
                      getDataFromInternet();
 
                      alterdiagog.dismiss();
@@ -444,7 +483,7 @@ public class MainActivity extends AppCompatActivity {
     public void getDataFromInternet(){
 
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22"+cityUrl+"%22)and%20u=\"c\"&format=json",
+        client.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22"+cityUrl+"%22)"+ jednostki +"&format=json",
                 new AsyncHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

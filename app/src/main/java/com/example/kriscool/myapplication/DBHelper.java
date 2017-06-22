@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 class DBHelper extends SQLiteOpenHelper {
     private final static int DB_VERSION = 1;
-    private final static String DB_NAME = "AppDB.db";
+    private final static String DB_NAME = "ulubione.db";
 
     public DBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
